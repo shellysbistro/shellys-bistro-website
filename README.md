@@ -13,7 +13,17 @@ node scripts/build.mjs
 node scripts/serve.mjs
 ```
 
-Visit `http://127.0.0.1:4173/`. Run `node --test tests/site.test.mjs` after building, or `npm run check`.
+Visit `http://127.0.0.1:4173/`. Run `npm run check` to build the review site and test both build modes.
+
+The default build remains a tester/review build: it uses the shared catering preview, keeps photo-slot labels, and blocks indexing. To generate a production-ready export in PowerShell, explicitly set both variables before building:
+
+```powershell
+$env:SHELLY_BUILD_MODE = 'production'
+$env:SHELLY_CATERING_URL = 'https://<approved-stable-catering-domain>/'
+node scripts/build.mjs
+```
+
+Production mode removes the `noindex` tag and `robots.txt` disallow rule, and leaves styled photo spaces without the words “Photo coming soon.” It refuses a missing, tokenized, non-HTTPS, preview or tester catering URL. This build guard does **not** approve any content or prove that the catering checkout works. Verify the destination, address, hours, owner story, photo permissions and order-email delivery before publishing. Clear `SHELLY_BUILD_MODE` or set it to `review` before building the tester site again.
 
 ## Edit the site
 
@@ -26,4 +36,4 @@ Vercel serves only the generated `dist/` output. It is intentionally excluded fr
 
 ## Vercel
 
-The site is deployed to the `shellys-bistro-testers` Vercel project. `vercel.json` selects the **Other** framework, runs `node scripts/build.mjs`, and serves `dist/`. This deployment was made with the Vercel CLI; GitHub pushes will not automatically deploy until the Vercel project is connected to this repository. Keep `noindex` and do not connect a final production domain until the owner approves the final content, photography, menu and business details.
+The site is deployed to the `shellys-bistro-testers` Vercel project. `vercel.json` selects the **Other** framework, runs `node scripts/build.mjs`, and serves `dist/`. This deployment was made with the Vercel CLI; GitHub pushes will not automatically deploy until the Vercel project is connected to this repository. The tester project should remain in default `review` mode. Do not connect a final production domain until the owner approves the final content, photography, menu and business details.

@@ -1,5 +1,7 @@
+import { cateringRequestUrl } from './build-mode.mjs';
+
 // The photographed August 2026 content plan is a draft, not owner approval.
-// Facts with a review status remain visible only in this local, noindex build.
+// Build mode does not imply approval of facts, stories, photos or business details.
 export const business = {
   name: 'Shelly’s Indigenous Bistro',
   shortName: 'Shelly’s',
@@ -10,7 +12,7 @@ export const business = {
   phoneHref: 'tel:+14314410887',
   phoneStatus: 'Owner confirmed 431-441-0887 for the website and approved logo',
   currentMenuUrl: 'https://www.skipthedishes.com/shellys-indigenous-bistro',
-  cateringRequestUrl: 'https://shellys-catering-menu-khwoj3xrj-richardtrippy-9144s-projects.vercel.app/?_vercel_share=K57t6jr6PpZm5FTpLVTuJghpBnzVKA4r',
+  cateringRequestUrl,
   directionsUrl: 'https://www.google.com/maps/search/?api=1&query=1364+Main+Street+Winnipeg+MB'
 };
 

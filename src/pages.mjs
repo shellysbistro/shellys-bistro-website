@@ -1,4 +1,5 @@
 import { business, cateringSections, communityExamples, communityThemes, impactFigures, menuHighlights, photoSlots } from './content.mjs';
+import { isProduction } from './build-mode.mjs';
 
 const numberFormat = new Intl.NumberFormat('en-CA');
 const annualizedDonatedMeals = impactFigures.donatedMealsMonthlyFloor * 12;
@@ -9,7 +10,7 @@ const photoSlot = (key, modifier = '') => {
   if (slot.src && !slot.alt) throw new Error(`Add descriptive alt text for photo slot: ${key}`);
   const media = slot.src
     ? `<img src="${slot.src}" alt="${slot.alt}" loading="${key === 'homeFood' ? 'eager' : 'lazy'}">`
-    : `<div class="photo-slot__pending"><span>Photo coming soon</span><strong>${slot.title}</strong></div>`;
+    : `<div class="photo-slot__pending">${isProduction ? '' : '<span>Photo coming soon</span>'}<strong>${slot.title}</strong></div>`;
   return `<figure class="photo-slot photo-slot--${slot.shape} ${modifier}" data-photo-slot="${key}" data-expected-file="/photos/${slot.file}"><div class="photo-slot__media">${media}</div>${slot.src ? `<figcaption>${slot.title}</figcaption>` : ''}</figure>`;
 };
 
@@ -19,7 +20,7 @@ const cardPhoto = (key) => {
   if (slot.src && !slot.alt) throw new Error(`Add descriptive alt text for card photo slot: ${key}`);
   const media = slot.src
     ? `<img src="${slot.src}" alt="${slot.alt}" loading="lazy">`
-    : `<span class="food-flashcard__pending"><span class="food-flashcard__pending-label">Photo coming soon</span><strong>${slot.title}</strong></span>`;
+    : `<span class="food-flashcard__pending">${isProduction ? '' : '<span class="food-flashcard__pending-label">Photo coming soon</span>'}<strong>${slot.title}</strong></span>`;
   return `<span class="food-flashcard__photo" data-photo-slot="${key}" data-expected-file="/photos/${slot.file}">${media}</span>`;
 };
 

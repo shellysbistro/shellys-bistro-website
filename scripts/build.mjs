@@ -2,6 +2,7 @@ import { cp, mkdir, rm, writeFile } from 'node:fs/promises';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { business, headerNavigation } from '../src/content.mjs';
+import { buildMode, isProduction } from '../src/build-mode.mjs';
 import { notFoundPage, pages } from '../src/pages.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -43,7 +44,7 @@ function render(page) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="robots" content="noindex,nofollow">
+  ${isProduction ? '' : '<meta name="robots" content="noindex,nofollow">'}
   <meta name="theme-color" content="#151713">
   <title>${page.title}</title>
   <meta name="description" content="${page.description}">
@@ -76,5 +77,5 @@ await writeFile(join(dist, '404.html'), render(notFoundPage), 'utf8');
 await cp(join(root, 'public'), dist, { recursive: true, filter: (source) => !source.endsWith('README.md') });
 await cp(join(root, 'src', 'site.css'), join(dist, 'styles.css'));
 await cp(join(root, 'src', 'site.js'), join(dist, 'site.js'));
-await writeFile(join(dist, 'robots.txt'), 'User-agent: *\nDisallow: /\n', 'utf8');
-console.log(`Built ${pages.length} review pages in ${dist}`);
+await writeFile(join(dist, 'robots.txt'), isProduction ? 'User-agent: *\nAllow: /\n' : 'User-agent: *\nDisallow: /\n', 'utf8');
+console.log(`Built ${pages.length} ${buildMode} pages in ${dist}`);
