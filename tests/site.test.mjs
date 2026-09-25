@@ -4,7 +4,7 @@ import { join, resolve } from 'node:path';
 import test from 'node:test';
 import { dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { business, communityExamples, communityThemes, impactFigures, menuHighlights, navigation, photoSlots } from '../src/content.mjs';
+import { business, cateringSections, communityExamples, communityThemes, impactFigures, menuHighlights, navigation, photoSlots } from '../src/content.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const dist = join(root, 'dist');
@@ -144,6 +144,22 @@ test('catering handoff describes a request and does not promise payment or booki
   assert.doesNotMatch(catering, /book now|pay now|reservation confirmed/i);
 });
 
+test('the final catering menu is complete, price-accurate and available as flashcards', () => {
+  const catering = htmlFor('/catering/');
+  assert.equal(cateringSections.length, 9);
+  assert.equal(cateringSections.reduce((total, section) => total + section.items.length, 0), 40);
+  assert.equal((catering.match(/<details class="catering-menu-card"/g) || []).length, cateringSections.length);
+  for (const section of cateringSections) {
+    assert.ok(catering.includes(section.title.replaceAll('&', '&amp;')), `Missing catering section ${section.title}`);
+    for (const item of section.items) assert.ok(catering.includes(item.name.replaceAll('&', '&amp;')), `Missing catering item ${item.name}`);
+  }
+  for (const amount of ['Small $30 · Medium $48 · Large $69', 'Small $63 · Medium $93 · Large $132', '$10.50 per person', '$1.50 per person']) {
+    assert.ok(catering.includes(amount), `Missing documented catering price ${amount}`);
+  }
+  assert.match(catering, /Delivery cost is quoted by location|delivery cost is quoted by location/);
+  assert.doesNotMatch(catering, /bison stew|assorted bannock tray|hamburger beef/i);
+});
+
 test('Shelly and Vince stories, ownership and community content from the plan are present', () => {
   const story = htmlFor('/our-story/');
   assert.match(story, /Shelly Kanfer/);
@@ -205,7 +221,7 @@ test('food highlights and homepage favourites open as native flashcards', () => 
   assert.match(menu, /<summary class="food-flashcard__front" aria-label="Three Sisters Soup food card">/);
   assert.match(menu, /Close food card/);
   assert.match(sourceFor('site.css'), /@keyframes flashcard-open/);
-  assert.match(sourceFor('site.css'), /\.food-flashcard__back, \.signature__back \{ animation: none !important; \}/);
+  assert.match(sourceFor('site.css'), /\.food-flashcard__back, \.signature__back, \.catering-menu-card__inside \{ animation: none !important; \}/);
   assert.match(sourceFor('site.js'), /event\.key !== 'Escape' \|\| !card\.open/);
 });
 

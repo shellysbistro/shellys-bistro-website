@@ -49,6 +49,96 @@ export const menuHighlights = [
   }
 ];
 
+// Owner-supplied final catering menu, September 2026. Prices are shown only
+// where printed; all other selections are quoted for the event.
+export const cateringSections = [
+  {
+    title: 'Trays & platters',
+    items: [
+      { name: 'Bannock & Fry Bread Platter', description: 'Chef-selected bannock and fry bread with whipped butter and homemade blueberry spread.', price: 'Small $30 · Medium $48 · Large $69' },
+      { name: 'Seasonal Vegetable Platter', description: 'Crisp seasonal vegetables with creamy ranch dip.', price: 'Small $63 · Medium $93 · Large $132' },
+      { name: 'Seasonal Fruit Platter', description: 'Freshly prepared seasonal fruit.', price: 'Small $63 · Medium $93 · Large $132' },
+      { name: 'Deli Meat & Cheese Platter', description: 'Sliced deli meats and cheeses for self-service. Ask about adding crackers and fresh bread.' },
+      { name: 'Social Gathering Platter', description: 'Fresh bread, assorted deli meats and cheeses, mustard and jumbo wraps.' }
+    ]
+  },
+  {
+    title: 'Breakfast catering',
+    items: [
+      { name: 'Breakfast Sweets Platter', description: 'Cinnamon buns, chocolate croissants and breakfast breads, with pancake rolls or breakfast wraps.' },
+      { name: 'Continental Breakfast Package', description: 'Seasonal fruit, assorted cheeses, breakfast breads, pastries, cinnamon buns and chocolate croissants.' }
+    ]
+  },
+  {
+    title: 'Sandwiches, wraps & boxed lunches',
+    items: [
+      { name: 'Sandwich & Wrap Platter', description: 'Chef-selected sandwiches, pinwheels and wraps. Ask about fillings and vegetarian choices.' },
+      { name: 'Corporate Boxed Lunch', description: 'Individually packed lunch with a cold sandwich or wrap, drink and dessert. Soup, salad, fruit or snacks can be added.' },
+      { name: 'Soup, Sandwich & Salad Package', description: 'Assorted sandwiches and wraps, a choice of soup, garden salad, a cookie and a beverage.' },
+      { name: 'Soup & Stew Package', description: 'Rotating homemade soup or hearty stew with bannock or fry bread.' }
+    ]
+  },
+  {
+    title: 'Pasta packages',
+    items: [
+      { name: 'Chicken Broccoli Alfredo', description: 'Chicken, broccoli and pasta in a creamy Alfredo sauce.' },
+      { name: 'Spaghetti Dinner', description: 'Ground-beef meat sauce or vegetarian marinara, with Caesar salad, bacon, bannock croutons and garlic bannock twists.' }
+    ]
+  },
+  {
+    title: 'Comfort-food packages',
+    items: [
+      { name: 'Shepherd’s Pie Dinner', description: 'Shepherd’s pie, garden salad and garlic bannock twists.' },
+      { name: 'Meatloaf Dinner', description: 'Meatloaf with corn, mashed potatoes, seasonal vegetables and salad.' },
+      { name: 'Salisbury Meatball Dinner', description: 'Salisbury-style meatballs, mashed potatoes, seasonal vegetables and salad.' },
+      { name: 'Blueberry BBQ Pork Tenderloin', description: 'Pork tenderloin with blueberry barbecue sauce, mashed potatoes, coleslaw and seasonal vegetables.' },
+      { name: 'Roast Beef Dinner', description: 'Roast beef with mashed or roasted potatoes and seasonal vegetables.' },
+      { name: 'Turkey Dinner', description: 'Turkey, carrots, traditional stuffing and a choice of potatoes.' },
+      { name: 'Chicken Dinner', description: 'Roasted chicken, scalloped potatoes and garden salad.' }
+    ]
+  },
+  {
+    title: 'Indigenous-inspired favourites',
+    items: [
+      { name: 'Bannock Taco Bar', description: 'Build-your-own bannock tacos with toppings and accompaniments, served with baked or fried bannock.' },
+      { name: 'Bannock Dog Platter', description: 'Shelly’s signature bannock dogs for group service.' },
+      { name: 'Bannock Sliders', description: 'Mini sandwiches on bannock with chef-selected meats and toppings.' },
+      { name: 'Casual Favourites Package', description: 'Choose from pizza, sliders, burgers, chicken fingers and bannock dogs. Add sides, salads or beverages.' }
+    ]
+  },
+  {
+    title: 'Asian-inspired catering',
+    items: [
+      { name: 'Ginger Beef & Sweet-and-Sour Pork', description: 'A combination made for group dining.' },
+      { name: 'Cantonese Chow Mein', description: 'Noodles and vegetables.' },
+      { name: 'Soup Add-On', description: 'Consommé-style soup with fried noodles or wontons.' }
+    ]
+  },
+  {
+    title: 'Desserts',
+    items: [
+      { name: 'Cinnamon Fry Bread' },
+      { name: 'Chocolate Cake' },
+      { name: 'Apple Crisp' },
+      { name: 'Cheesecake', description: 'Blueberry, strawberry or vanilla.' },
+      { name: 'Rice Pudding', description: 'Made in-house.' },
+      { name: 'Sprinkle Cookies' },
+      { name: 'Cinnamon Wonton-Chip Tray' },
+      { name: 'Danish & Tart Tray' }
+    ]
+  },
+  {
+    title: 'Meal programs & add-ons',
+    items: [
+      { name: 'Daily Lunch Special Subscription', description: 'Scheduled lunches for workplaces and community programs.', price: '$10.50 per person' },
+      { name: 'Recurring meal programs', description: 'Breakfast, lunch or dinner delivered daily or on a schedule. Ask about corporate accounts, program subscriptions, boxed lunches and group catering.' },
+      { name: 'Plates & cutlery', price: '$1.50 per person' },
+      { name: 'Delivery', description: 'Within the designated service area, starting at $5. Final delivery cost is quoted by location.' },
+      { name: 'More to add', description: 'Ask about soup, salad, fruit, desserts, beverages, extra bannock or fry bread, and homemade blueberry spread.' }
+    ]
+  }
+];
+
 export const navigation = [
   { path: '/', label: 'Home' },
   { path: '/menu/', label: 'Food highlights' },
