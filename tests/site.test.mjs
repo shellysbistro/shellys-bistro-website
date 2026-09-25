@@ -146,8 +146,8 @@ test('catering handoff describes a request and does not promise payment or booki
 
 test('the final catering menu is complete, price-accurate and available as flashcards', () => {
   const catering = htmlFor('/catering/');
-  assert.equal(cateringSections.length, 9);
-  assert.equal(cateringSections.reduce((total, section) => total + section.items.length, 0), 40);
+  assert.equal(cateringSections.length, 10);
+  assert.equal(cateringSections.reduce((total, section) => total + section.items.length, 0), 41);
   assert.equal((catering.match(/<details class="catering-menu-card"/g) || []).length, cateringSections.length);
   for (const section of cateringSections) {
     assert.ok(catering.includes(section.title.replaceAll('&', '&amp;')), `Missing catering section ${section.title}`);
@@ -158,6 +158,35 @@ test('the final catering menu is complete, price-accurate and available as flash
   }
   assert.match(catering, /Delivery cost is quoted by location|delivery cost is quoted by location/);
   assert.doesNotMatch(catering, /bison stew|assorted bannock tray|hamburger beef/i);
+});
+
+test('catering copy reflects owner feedback without mixing breakfast wraps into sweets', () => {
+  const catering = htmlFor('/catering/');
+  assert.match(catering, /Shelly’s brings your favourites to your gathering\./);
+  for (const title of ['Corporate &amp; Government', 'Indigenous Organizations', 'Traditional Feasts', 'Conferences &amp; Training', 'Weddings &amp; Family', 'Schools &amp; Youth', 'Emergency &amp; Large-Volume', 'Individually Packaged']) {
+    assert.ok(catering.includes(`<h3>${title}</h3>`), `Missing title-cased catering heading: ${title}`);
+  }
+  const breakfast = cateringSections.find((section) => section.title === 'Breakfast catering');
+  const wraps = cateringSections.find((section) => section.title === 'Breakfast Wraps');
+  assert.ok(breakfast);
+  assert.ok(wraps?.items.some((item) => item.name === 'Breakfast Wraps'));
+  assert.match(catering, /1 selection/);
+  assert.doesNotMatch(catering, /1 selections/);
+  assert.ok(breakfast.items.every((item) => !/breakfast wraps/i.test(item.description || '')));
+  assert.ok(catering.includes('Chicken Alfredo'));
+  assert.doesNotMatch(catering, /Chicken Broccoli Alfredo|Made in-house\./);
+  assert.ok(cateringSections.find((section) => section.title === 'Desserts')?.items.some((item) => item.name === 'Rice Pudding' && !item.description));
+});
+
+test('catering cards carry a restrained floral-red outline', () => {
+  const css = sourceFor('site.css');
+  assert.match(css, /--flower-red:\s*#b12d3d;/);
+  assert.match(css, /\.catering-paths article\s*\{[^}]*border:\s*2px solid var\(--flower-red\)/);
+  assert.match(css, /\.catering-menu-card\s*\{[^}]*border:\s*2px solid var\(--flower-red\)/);
+});
+
+test('footer uses the approved short brand line', () => {
+  assert.match(htmlFor('/catering/'), /Fresh\. Local\.<br>Indigenous-owned\./);
 });
 
 test('Shelly and Vince stories, ownership and community content from the plan are present', () => {

@@ -67,8 +67,14 @@ export const cateringSections = [
   {
     title: 'Breakfast catering',
     items: [
-      { name: 'Breakfast Sweets Platter', description: 'Cinnamon buns, chocolate croissants and breakfast breads, with pancake rolls or breakfast wraps.' },
+      { name: 'Breakfast Sweets Platter', description: 'Cinnamon buns, chocolate croissants and breakfast breads, with pancake rolls.' },
       { name: 'Continental Breakfast Package', description: 'Seasonal fruit, assorted cheeses, breakfast breads, pastries, cinnamon buns and chocolate croissants.' }
+    ]
+  },
+  {
+    title: 'Breakfast Wraps',
+    items: [
+      { name: 'Breakfast Wraps' }
     ]
   },
   {
@@ -83,7 +89,7 @@ export const cateringSections = [
   {
     title: 'Pasta packages',
     items: [
-      { name: 'Chicken Broccoli Alfredo', description: 'Chicken, broccoli and pasta in a creamy Alfredo sauce.' },
+      { name: 'Chicken Alfredo', description: 'Chicken, broccoli and pasta in a creamy Alfredo sauce.' },
       { name: 'Spaghetti Dinner', description: 'Ground-beef meat sauce or vegetarian marinara, with Caesar salad, bacon, bannock croutons and garlic bannock twists.' }
     ]
   },
@@ -123,7 +129,7 @@ export const cateringSections = [
       { name: 'Chocolate Cake' },
       { name: 'Apple Crisp' },
       { name: 'Cheesecake', description: 'Blueberry, strawberry or vanilla.' },
-      { name: 'Rice Pudding', description: 'Made in-house.' },
+      { name: 'Rice Pudding' },
       { name: 'Sprinkle Cookies' },
       { name: 'Cinnamon Wonton-Chip Tray' },
       { name: 'Danish & Tart Tray' }

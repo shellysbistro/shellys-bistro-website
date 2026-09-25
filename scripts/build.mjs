@@ -30,7 +30,7 @@ function footer() {
   return `
     <footer class="site-footer">
       <div class="wrap site-footer__top">
-        <div><a class="wordmark wordmark--footer" href="/" aria-label="Shelly’s Indigenous Bistro home"><img class="wordmark__image" src="/brand/shellys-logo.png" width="602" height="589" alt=""><span class="wordmark__text"><strong>Shelly’s</strong><span>Indigenous Bistro</span></span></a><p>Indigenous food. Familiar favourites.<br>Made for community.</p></div>
+        <div><a class="wordmark wordmark--footer" href="/" aria-label="Shelly’s Indigenous Bistro home"><img class="wordmark__image" src="/brand/shellys-logo.png" width="602" height="589" alt=""><span class="wordmark__text"><strong>Shelly’s</strong><span>Indigenous Bistro</span></span></a><p>Fresh. Local.<br>Indigenous-owned.</p></div>
         <div><h2>Explore</h2><a href="/catering/">Catering</a><a href="/menu/">Food highlights</a><a href="${business.currentMenuUrl}">Menu on Skip</a><a href="/our-story/">Our story</a><a href="/indigenous-ownership/">Indigenous ownership</a><a href="/community/">Community</a><a href="/stories/">Stories from Shelly’s</a></div>
         <div><h2>Find us</h2><p>${business.address}</p><a href="${business.phoneHref}">${business.phoneDisplay}</a><a href="/contact/">Visit &amp; contact</a></div>
       </div>
