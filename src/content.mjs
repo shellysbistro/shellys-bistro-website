@@ -6,14 +6,16 @@ export const business = {
   name: 'Shelly’s Indigenous Bistro',
   shortName: 'Shelly’s',
   location: 'Winnipeg, Manitoba',
-  address: '1364 Main Street, Winnipeg, MB',
-  addressStatus: 'Review against owner-approved current location',
+  address: '1364 Main Street, Winnipeg, MB R2W 3T8',
+  addressStatus: 'Postal code owner-confirmed from Wix business settings; street address also appears on Shelly’s contact page',
   phoneDisplay: '(431) 441-0887',
   phoneHref: 'tel:+14314410887',
   phoneStatus: 'Owner confirmed 431-441-0887 for the website and approved logo',
   currentMenuUrl: 'https://www.skipthedishes.com/shellys-indigenous-bistro',
+  cateringEmail: 'Catering@ShellysBistro.com',
+  cateringEmailHref: 'mailto:Catering@ShellysBistro.com',
   cateringRequestUrl,
-  directionsUrl: 'https://www.google.com/maps/search/?api=1&query=1364+Main+Street+Winnipeg+MB'
+  directionsUrl: 'https://www.google.com/maps/search/?api=1&query=1364+Main+Street+Winnipeg+MB+R2W+3T8'
 };
 
 export const menuHighlights = [

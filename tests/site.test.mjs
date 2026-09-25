@@ -99,6 +99,22 @@ test('the supplied logo and confirmed contact number appear consistently', () =>
   assert.ok(!existsSync(join(dist, 'photos', 'README.md')), 'Internal photo instructions should not be deployed');
 });
 
+test('confirmed postal code and catering inbox are available without changing the request handoff', () => {
+  const contact = htmlFor('/contact/');
+  const catering = htmlFor('/catering/');
+  assert.equal(business.address, '1364 Main Street, Winnipeg, MB R2W 3T8');
+  assert.match(business.directionsUrl, /R2W\+3T8$/);
+  assert.ok(contact.includes(business.address));
+  assert.ok(contact.includes(business.directionsUrl));
+  assert.equal(business.cateringEmail, 'Catering@ShellysBistro.com');
+  assert.equal(business.cateringEmailHref, 'mailto:Catering@ShellysBistro.com');
+  for (const html of [contact, catering]) {
+    assert.ok(html.includes(`href="${business.cateringEmailHref}"`));
+    assert.ok(html.includes(business.cateringEmail));
+    assert.ok(html.includes(business.cateringRequestUrl));
+  }
+});
+
 test('homepage ingredient scene is decorative and stops for reduced motion', () => {
   const home = htmlFor('/');
   assert.match(home, /class="hero__art" aria-hidden="true"/);

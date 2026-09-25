@@ -314,6 +314,8 @@ h3 { line-height: 1.15; }
 .steps span { color: var(--gold); }
 .steps h3 { color: #fff; }
 .steps p { max-width: 300px; color: #e1e8e1; font-size: 16px; }
+.catering-email { margin: 24px 0 0; color: #e1e8e1; font-size: 15px; }
+.catering-email a { color: var(--gold); font-weight: 900; overflow-wrap: anywhere; text-underline-offset: 4px; }
 .editorial { max-width: 850px; }
 .editorial h2 { margin-bottom: 38px; }
 .editorial p:not(.eyebrow) { max-width: 790px; margin-bottom: 24px; color: #41423b; font-size: clamp(19px, 2vw, 26px); line-height: 1.56; }
@@ -331,6 +333,7 @@ h3 { line-height: 1.15; }
 .contact-panel address { margin-bottom: 10px; font: 1000 30px/1.2 var(--display); letter-spacing: -.04em; }
 .contact-panel__rule { height: 1px; margin-block: 36px; background: var(--line); }
 .contact-panel__phone { display: inline-block; margin-bottom: 19px; color: var(--flower-red); font: 1000 29px/1.2 var(--display); letter-spacing: -.035em; }
+.contact-panel__email { display: inline-block; margin-bottom: 22px; color: var(--flower-red); font-weight: 900; overflow-wrap: anywhere; text-underline-offset: 4px; }
 .contact-panel p:not(.contact-panel__label) { margin-bottom: 26px; color: #55534b; font-size: 15px; }
 .contact-panel .button { width: 100%; }
 
