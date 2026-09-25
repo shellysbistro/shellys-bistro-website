@@ -1,12 +1,8 @@
-dist/
+.env*
+.git/
 .vercel/
 node_modules/
-.env
-.env.*
-!.env.example
-*.log
+dist/
 docs/
+tests/
 SHELLY_BISTRO_*PROMPT.md
-
-.vercel
-.env*

@@ -8,9 +8,9 @@ export const business = {
   addressStatus: 'Review against owner-approved current location',
   phoneDisplay: '(431) 441-0887',
   phoneHref: 'tel:+14314410887',
-  phoneStatus: 'Published on current site and printed menu; confirm against conflicting logo',
+  phoneStatus: 'Owner confirmed 431-441-0887 for the website and approved logo',
   currentMenuUrl: 'https://www.skipthedishes.com/shellys-indigenous-bistro',
-  cateringRequestUrl: 'https://shellys-catering-menu.vercel.app/',
+  cateringRequestUrl: 'https://shellys-catering-menu-khwoj3xrj-richardtrippy-9144s-projects.vercel.app/?_vercel_share=K57t6jr6PpZm5FTpLVTuJghpBnzVKA4r',
   directionsUrl: 'https://www.google.com/maps/search/?api=1&query=1364+Main+Street+Winnipeg+MB'
 };
 
