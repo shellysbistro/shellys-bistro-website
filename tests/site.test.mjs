@@ -185,6 +185,35 @@ test('catering cards carry a restrained floral-red outline', () => {
   assert.match(css, /\.catering-menu-card\s*\{[^}]*border:\s*2px solid var\(--flower-red\)/);
 });
 
+test('floral-red accents connect key pages without replacing dark-surface gold CTAs', () => {
+  const css = sourceFor('site.css');
+  for (const selector of [
+    '.site-nav a:not(.site-nav__cta)::after',
+    '.signature--featured',
+    '.menu-list > .food-flashcard:first-child',
+    '.story-teasers article:first-child',
+    '.impact-list li:nth-child(2)',
+    '.contact-panel__phone'
+  ]) {
+    assert.ok(css.includes(selector), `Missing brand-red touchpoint: ${selector}`);
+  }
+  assert.match(css, /\.section--cream \.button--primary, \.section--butter \.button--primary, \.section--sage \.button--primary\s*\{[^}]*background: var\(--flower-red\)/);
+  assert.match(css, /\.button--primary\s*\{[^}]*background: var\(--gold\)/);
+
+  const luminance = (hex) => {
+    const channels = hex.slice(1).match(/../g).map((channel) => Number.parseInt(channel, 16) / 255);
+    const [red, green, blue] = channels.map((channel) => channel <= 0.04045 ? channel / 12.92 : ((channel + 0.055) / 1.055) ** 2.4);
+    return red * 0.2126 + green * 0.7152 + blue * 0.0722;
+  };
+  const contrast = (a, b) => {
+    const [lighter, darker] = [luminance(a), luminance(b)].sort((x, y) => y - x);
+    return (lighter + 0.05) / (darker + 0.05);
+  };
+  for (const background of ['#fffaf1', '#f7f2e9', '#e3ebdf', '#ffffff']) {
+    assert.ok(contrast('#b12d3d', background) >= 4.5, `Red text is too low-contrast on ${background}`);
+  }
+});
+
 test('footer uses the approved short brand line', () => {
   assert.match(htmlFor('/catering/'), /Fresh\. Local\.<br>Indigenous-owned\./);
 });
